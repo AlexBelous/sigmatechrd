@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Sample inspection report · R-2603 · Agilent 1290 Infinity II UHPLC — Sigma Tech R&D</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Anonymised example of a Sigma Tech pre-acquisition inspection report — Agilent 1290 Infinity II UHPLC, six-page deliverable."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper:    oklch(0.97 0.008 85);
+      --paper2:   oklch(0.94 0.012 78);
+      --ink:      oklch(0.18 0.02 240);
+      --ink-soft: oklch(0.32 0.02 240);
+      --dim:      oklch(0.50 0.015 240);
+      --rule:     oklch(0.80 0.01 240);
+      --rule-soft: oklch(0.88 0.008 240);
+      --amber:    oklch(0.74 0.16 60);
+      --amber-deep: oklch(0.62 0.16 55);
+      --red:      oklch(0.55 0.20 25);
+      --green:    oklch(0.45 0.14 145);
+      --serif:    'IBM Plex Serif', Georgia, serif;
+      --mono:     'IBM Plex Mono', ui-monospace, monospace;
+      --sans:     'IBM Plex Sans', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: oklch(0.93 0.012 85); font-family: var(--sans); color: var(--ink); }
+    a { color: inherit; }
+    ::selection { background: var(--amber); color: var(--ink); }
+
+    /* Document wrapper */
+    .doc {
+      max-width: 1080px;
+      margin: 32px auto 64px;
+      padding: 0 12px;
+    }
+    .doc-bar {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 18px 12px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim);
+    }
+    .doc-bar a { color: var(--ink); text-decoration: none; }
+    .doc-bar a:hover { border-bottom: 1.5px solid var(--amber-deep); }
+
+    /* Page */
+    .page {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      box-shadow: 0 24px 60px -32px rgba(0,0,0,0.18), 0 1px 2px rgba(0,0,0,0.04);
+      padding: 56px 72px 64px;
+      margin: 0 auto 32px;
+      position: relative;
+      min-height: 80vh;
+    }
+    .page-head {
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 14px; margin-bottom: 32px;
+    }
+    .page-head b { color: var(--ink); font-weight: 600; }
+    .page-foot {
+      position: absolute; left: 72px; right: 72px; bottom: 20px;
+      display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim);
+      padding-top: 14px; border-top: 1px dashed var(--rule);
+    }
+
+    /* Type */
+    h1.cover {
+      font-family: var(--serif); font-weight: 400;
+      font-size: 92px; line-height: 0.94; letter-spacing: -0.03em;
+      margin: 0;
+    }
+    h2 { font-family: var(--serif); font-weight: 400; font-size: 36px; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 24px; }
+    h3 { font-family: var(--serif); font-weight: 500; font-size: 22px; line-height: 1.2; margin: 0 0 12px; }
+    p.lede { font-family: var(--serif); font-size: 19px; line-height: 1.55; color: var(--ink-soft); margin: 0 0 24px; max-width: 80ch; }
+    p.body { font-family: var(--serif); font-size: 15.5px; line-height: 1.65; color: var(--ink-soft); margin: 0 0 18px; max-width: 70ch; }
+    .meta {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--dim);
+    }
+    .label-rule {
+      display: flex; align-items: center; gap: 14px;
+      margin: 32px 0 18px;
+    }
+    .label-rule .label {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--ink); white-space: nowrap;
+    }
+    .label-rule .line { flex: 1; height: 1px; background: var(--ink); opacity: 0.5; }
+
+    /* Cover page composition */
+    .cover-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 40px;
+      align-items: flex-start;
+      margin-top: 16px;
+    }
+    .cover-kv { display: grid; grid-template-columns: 130px 1fr; gap: 10px 14px; font-family: var(--mono); font-size: 12px; line-height: 1.6; }
+    .cover-kv span:nth-child(odd) { color: var(--dim); letter-spacing: 0.08em; text-transform: uppercase; }
+
+    /* Wordmark */
+    .wordmark { display: inline-flex; align-items: center; gap: 14px; font-family: var(--mono); }
+    .wordmark .mark { width: 38px; height: 24px; }
+    .wordmark .name { font-weight: 600; letter-spacing: 0.06em; font-size: 15px; text-transform: uppercase; }
+    .wordmark .sub { font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); }
+
+    /* Verdict stamps */
+    .stamp {
+      display: inline-block;
+      font-family: var(--mono); font-size: 13px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      border: 1.5px solid currentColor; padding: 6px 12px;
+      transform: rotate(-1.5deg);
+    }
+    .stamp.pass-cond { color: var(--amber-deep); }
+    .stamp.pass { color: var(--green); }
+    .stamp.fail { color: var(--red); }
+
+    /* Summary cards */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 24px 0 16px;
+    }
+    .summary-card {
+      border: 1.5px solid var(--ink);
+      padding: 20px 22px 22px;
+      background: var(--paper2);
+    }
+    .summary-card .k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); }
+    .summary-card .v { font-family: var(--serif); font-size: 32px; line-height: 1.05; margin-top: 6px; letter-spacing: -0.015em; }
+    .summary-card .d { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--ink-soft); margin-top: 6px; text-transform: uppercase; }
+    .summary-card.amber .v { color: var(--amber-deep); }
+    .summary-card.green .v { color: var(--green); }
+
+    /* Test table */
+    table.spec { width: 100%; border-collapse: collapse; margin-top: 16px; font-family: var(--mono); font-size: 12.5px; }
+    table.spec th { text-align: left; font-weight: 500; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); padding: 10px 12px 10px 0; border-bottom: 1.5px solid var(--ink); }
+    table.spec td { padding: 14px 12px 14px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    table.spec td.k { color: var(--ink); width: 32%; }
+    table.spec td.v { color: var(--ink); font-weight: 500; width: 22%; }
+    table.spec td.spec { color: var(--dim); width: 22%; }
+    table.spec td.flag { width: 80px; font-weight: 700; }
+    table.spec td.flag.ok { color: var(--green); }
+    table.spec td.flag.warn { color: var(--amber-deep); }
+    table.spec td.flag.fail { color: var(--red); }
+    table.spec td.note { color: var(--ink-soft); font-family: var(--serif); font-size: 14px; line-height: 1.5; }
+
+    /* Photo grid */
+    .plates {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 8px 0 16px;
+    }
+    .plate {
+      border: 1px solid var(--rule);
+      background: var(--paper2);
+      aspect-ratio: 4/3;
+      position: relative;
+    }
+    .plate svg { display: block; width: 100%; height: 100%; }
+    .plate .cap {
+      position: absolute; bottom: 8px; left: 10px; right: 10px;
+      display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--dim);
+    }
+    .plate .plate-no {
+      position: absolute; top: 8px; left: 10px;
+      font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--dim);
+    }
+
+    /* Signal trace box */
+    .trace {
+      border: 1px solid var(--rule);
+      background: var(--paper2);
+      padding: 14px 16px 12px;
+      margin: 8px 0 16px;
+    }
+    .trace .grid { display: block; }
+
+    /* Sig block */
+    .sig {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 32px;
+    }
+    .sig-box {
+      border-top: 1.5px solid var(--ink);
+      padding-top: 14px;
+    }
+    .sig-name { font-family: var(--serif); font-style: italic; font-size: 28px; color: var(--ink); transform: rotate(-3deg); display: inline-block; line-height: 1; }
+    .sig-meta { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); margin-top: 6px; }
+    .sig-line { font-family: var(--mono); font-size: 12.5px; color: var(--ink); margin-top: 14px; }
+
+    /* Cover stamps */
+    .stamp-block {
+      display: flex; gap: 16px; flex-wrap: wrap; margin-top: 28px;
+    }
+
+    /* Toolbar / utility */
+    .toolbar {
+      max-width: 1080px;
+      margin: 0 auto 16px;
+      padding: 0 12px;
+      display: flex; gap: 12px;
+    }
+    .toolbar a, .toolbar button {
+      font-family: var(--mono); font-size: 12px;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 10px 16px;
+      background: var(--paper); border: 1.5px solid var(--ink);
+      color: var(--ink); text-decoration: none;
+      cursor: pointer;
+    }
+    .toolbar a:hover, .toolbar button:hover { background: var(--ink); color: var(--paper); }
+    .toolbar .primary { background: var(--amber-deep); color: var(--paper); border-color: var(--amber-deep); }
+    .toolbar .primary:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+    /* Print: each .page on its own sheet, no shadows/margins */
+    @media print {
+      body { background: white; }
+      .doc-bar, .toolbar { display: none; }
+      .doc { margin: 0; padding: 0; max-width: none; }
+      .page { box-shadow: none; border: none; padding: 24mm 22mm 28mm; margin: 0; page-break-after: always; min-height: 248mm; }
+      .page-foot { position: fixed; bottom: 12mm; left: 22mm; right: 22mm; }
+    }
+
+    /* Responsive */
+    @media (max-width: 720px) {
+      .page { padding: 40px 24px 56px; }
+      .page-foot { left: 24px; right: 24px; bottom: 12px; }
+      h1.cover { font-size: 56px; }
+      h2 { font-size: 28px; }
+      .summary-grid { grid-template-columns: 1fr; }
+      .cover-grid { grid-template-columns: 1fr; gap: 20px; }
+      .plates { grid-template-columns: 1fr 1fr; }
+      .sig { grid-template-columns: 1fr; }
+      table.spec td.note { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top doc bar -->
+  <div class="doc-bar">
+    <div style="display:flex; gap:24px; flex-wrap:wrap;">
+      <span>Document · <b>sigmatechrd.com</b></span>
+      <span>Sample report</span>
+      <span>Vol. I · Issue 01 / 2026</span>
+    </div>
+    <div style="display:flex; gap:18px; flex-wrap:wrap;">
+      <a href="index.html">← Back to home</a>
+      <a href="mailto:info@sigmatechrd.com">info@sigmatechrd.com</a>
+    </div>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <a class="primary" href="javascript:window.print()">Print / save PDF&nbsp;↓</a>
+    <a href="index.html#brief">Brief us on a lot →</a>
+  </div>
+
+  <div class="doc">
+
+  <!-- ╔════ Page 1 — Cover ═══════════════════════════════════════════╗ -->
+  <article class="page" id="p1">
+    <div class="page-head">
+      <span>Inspection report · <b>R-2603</b></span>
+      <span>Page 1 / 6 · Cover</span>
+    </div>
+
+    <div class="wordmark">
+      <svg class="mark" viewBox="0 0 62 40" stroke="oklch(0.18 0.02 240)" stroke-width="2.8" fill="none">
+        <path d="M8 2 L2 2 L2 38 L8 38" stroke-linecap="square"/>
+        <path d="M54 2 L60 2 L60 38 L54 38" stroke-linecap="square"/>
+        <path d="M44 8 L18 8 L31 20 L18 32 L44 32" stroke="oklch(0.62 0.16 55)" stroke-width="3.6" stroke-linecap="square"/>
+        <line x1="20" y1="36" x2="42" y2="36" stroke-width="1"/>
+      </svg>
+      <div>
+        <div class="name">Sigma Tech</div>
+        <div class="sub">R&amp;D Solutions</div>
+      </div>
+    </div>
+
+    <div class="cover-grid">
+      <div class="meta" style="margin-top:24px;">
+        Report №<br/>
+        <span style="color:var(--ink); font-family:var(--serif); font-style:italic; font-size:32px; line-height:1; display:block; margin-top:6px;">R-2603</span>
+        <span style="display:block; margin-top:18px;">Issued</span>
+        <span style="color:var(--ink); font-size:13px; display:block; margin-top:4px;">12 MAR 2026</span>
+        <span style="display:block; margin-top:18px;">Inspector</span>
+        <span style="color:var(--ink); font-size:13px; display:block; margin-top:4px;">04 · S.T.</span>
+        <span style="display:block; margin-top:18px;">Pages</span>
+        <span style="color:var(--ink); font-size:13px; display:block; margin-top:4px;">vi + 6</span>
+      </div>
+
+      <div>
+        <div class="meta">Subject of report</div>
+        <h1 class="cover" style="margin-top:18px;">
+          Agilent 1290<br/>
+          <span style="font-style:italic; font-weight:300;">Infinity II</span><br/>
+          UHPLC.
+        </h1>
+        <p class="lede" style="margin-top:32px;">
+          On-site inspection of a pre-owned six-module UHPLC stack offered at bid auction (Boston, US). Performed against the OEM specification sheet over 1.5 days, with reference samples shipped ahead by the buyer.
+        </p>
+
+        <div class="stamp-block">
+          <span class="stamp pass-cond">PASS · CONDITIONAL</span>
+          <span class="meta" style="align-self:center;">
+            Recommended bid <b style="color:var(--amber-deep); font-family:var(--mono); font-size:14px;">$75 500</b> · against ask $84 000
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="label-rule" style="margin-top:48px;">
+      <span class="label">Document metadata</span>
+      <span class="line"></span>
+    </div>
+    <div class="cover-kv" style="margin-top:14px;">
+      <span>Buyer</span><span>Pharma R&amp;D · EU · redacted</span>
+      <span>Source</span><span>Bid auction · US · lot withheld for buyer privacy</span>
+      <span>Inspector visit</span><span>1.5 days · Boston, US · 10–11 Mar 2026</span>
+      <span>Unit age</span><span>6 yr · 18 400 injections · 14 mo. since last CE</span>
+      <span>Classification</span><span>Confidential · buyer eyes only · anonymised public sample</span>
+      <span>Issuer</span><span>Sigma Tech R&amp;D Solutions Limited · CR 79446742 · HK SAR</span>
+    </div>
+
+    <div class="page-foot">
+      <span>Sigma Tech R&amp;D Solutions · sigmatechrd.com</span>
+      <span>R-2603 · Cover · 1/6</span>
+    </div>
+  </article>
+
+  <!-- ╔════ Page 2 — Executive summary ═════════════════════════════════╗ -->
+  <article class="page" id="p2">
+    <div class="page-head">
+      <span>Inspection report · <b>R-2603</b> · Agilent 1290 Infinity II UHPLC</span>
+      <span>Page 2 / 6 · Executive summary</span>
+    </div>
+
+    <div class="meta">§ 1 · Executive summary</div>
+    <h2 style="margin-top:10px;">The unit passes, with two conditions worth pricing&nbsp;in.</h2>
+
+    <p class="lede">
+      Mechanically the instrument is healthy. The binary pump, autosampler and column compartment all hold their respective specs across the protocol window — the unit ran reference samples for 24 hours without intervention.
+    </p>
+    <p class="body">
+      Two findings warrant a price adjustment rather than a walk: the DAD lamp is at <b style="color:var(--ink);">71 % remaining hours</b> (well above the 50 % we treat as a hard floor, but a replacement is within 12 months at normal duty cycle); and the outlet check valve on pump A shows a 3 % pressure ripple at high flow, marginal but recoverable with a $1 200 part.
+    </p>
+    <p class="body">
+      Recommended bid is <b style="color:var(--amber-deep);">$75 500</b> against the listed ask of $84 000 — a 10.1 % delta that accommodates a DAD lamp replacement, an outlet check valve, and a $400 column shipping buffer.
+    </p>
+
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="k">Verdict</div>
+        <div class="v">PASS · CONDITIONAL</div>
+        <div class="d">2 of 5 protocol items flagged · neither blocking</div>
+      </div>
+      <div class="summary-card amber">
+        <div class="k">Recommended bid</div>
+        <div class="v">USD 75 500</div>
+        <div class="d">−10.1 % vs $84 000 ask</div>
+      </div>
+      <div class="summary-card green">
+        <div class="k">Recond. budget</div>
+        <div class="v">USD 3 400</div>
+        <div class="d">DAD lamp · outlet check valve · packing</div>
+      </div>
+    </div>
+
+    <div class="label-rule"><span class="label">Findings at a glance</span><span class="line"></span></div>
+    <table class="spec">
+      <thead>
+        <tr><th>Test item</th><th>Measured</th><th>Spec</th><th>Verdict</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="k">Pump A pulsation</td><td class="v">0.47 %</td><td class="spec">&lt; 0.5 %</td><td class="flag ok">✓ PASS</td></tr>
+        <tr><td class="k">DAD lamp remaining</td><td class="v">71 %</td><td class="spec">&gt; 50 %</td><td class="flag warn">⚠ COND</td></tr>
+        <tr><td class="k">Col. comp. Δ T (24 h)</td><td class="v">±0.05 °C</td><td class="spec">±0.1 °C</td><td class="flag ok">✓ PASS</td></tr>
+        <tr><td class="k">Carry-over (BSA)</td><td class="v">0.0004 %</td><td class="spec">&lt; 0.0005</td><td class="flag ok">✓ PASS</td></tr>
+        <tr><td class="k">Gradient accuracy</td><td class="v">±0.3 %</td><td class="spec">±1 %</td><td class="flag ok">✓ PASS</td></tr>
+        <tr><td class="k">Outlet check valve A</td><td class="v">3.1 % ripple</td><td class="spec">&lt; 2 %</td><td class="flag warn">⚠ COND</td></tr>
+      </tbody>
+    </table>
+
+    <div class="page-foot">
+      <span>Sigma Tech R&amp;D Solutions · sigmatechrd.com</span>
+      <span>R-2603 · Executive summary · 2/6</span>
+    </div>
+  </article>
+
+  <!-- ╔════ Page 3 — Methodology ═════════════════════════════════════╗ -->
+  <article class="page" id="p3">
+    <div class="page-head">
+      <span>Inspection report · <b>R-2603</b> · Agilent 1290 Infinity II UHPLC</span>
+      <span>Page 3 / 6 · Methodology</span>
+    </div>
+
+    <div class="meta">§ 2 · Methodology</div>
+    <h2 style="margin-top:10px;">Five test envelopes, run against the OEM spec sheet.</h2>
+
+    <p class="lede">
+      The unit was inspected at the seller's bench in Boston over two working days. Power, solvent, gas, and reference samples were arranged with the vendor ahead of the visit. No part was removed; covers were opened for serials, firmware, and visual inspection only.
+    </p>
+
+    <div class="label-rule"><span class="label">Test envelopes</span><span class="line"></span></div>
+    <table class="spec">
+      <thead>
+        <tr><th>Envelope</th><th>Method</th><th>Reference</th><th>Note</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="k">Pump · pressure & flow</td>
+          <td class="v">ASTM E1675</td>
+          <td class="spec">OEM § 4.2</td>
+          <td class="note">Static and dynamic pressure across 5 setpoints; pulsation Fourier-analysed off the high-pressure transducer.</td>
+        </tr>
+        <tr>
+          <td class="k">Autosampler · injection precision</td>
+          <td class="v">Caffeine 100 µg/mL · n=6</td>
+          <td class="spec">OEM § 6.1</td>
+          <td class="note">Buyer-supplied reference; RSD of peak area across six replicates and three vial positions.</td>
+        </tr>
+        <tr>
+          <td class="k">Col. comp. · thermal</td>
+          <td class="v">24 h hold @ 40 °C</td>
+          <td class="spec">OEM § 5.3</td>
+          <td class="note">RTD probe at the column inlet; logged at 5 s intervals.</td>
+        </tr>
+        <tr>
+          <td class="k">DAD · linearity & noise</td>
+          <td class="v">254 nm · 0–2000 mAU</td>
+          <td class="spec">OEM § 7.2</td>
+          <td class="note">Linearity vs. PEEK loop dilution; noise on baseline at 5 nm bandwidth.</td>
+        </tr>
+        <tr>
+          <td class="k">Carry-over</td>
+          <td class="v">BSA 1 mg/mL · blank cycle</td>
+          <td class="spec">OEM § 6.4</td>
+          <td class="note">Buyer-supplied protein; sample → blank → blank; carry-over computed off second blank.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="label-rule"><span class="label">Photo plates</span><span class="line"></span></div>
+    <div class="plates">
+      <div class="plate" id="plate-stack">
+        <div class="plate-no">PLATE 3.1</div>
+        <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+          <g stroke="oklch(0.18 0.02 240)" fill="oklch(0.91 0.012 78)">
+            <rect x="36" y="14" width="28" height="6" stroke-width="0.5"/>
+            <rect x="36" y="22" width="28" height="6" stroke-width="0.5"/>
+            <rect x="36" y="30" width="28" height="6" stroke-width="0.5"/>
+            <rect x="36" y="38" width="28" height="6" stroke-width="0.5"/>
+            <rect x="36" y="46" width="28" height="9" stroke-width="0.5"/>
+            <rect x="36" y="56" width="28" height="6" stroke-width="0.5"/>
+          </g>
+          <g fill="oklch(0.85 0.01 240)">
+            <rect x="40" y="16" width="6" height="2"/>
+            <rect x="40" y="24" width="6" height="2"/>
+            <rect x="40" y="32" width="6" height="2"/>
+            <rect x="40" y="40" width="6" height="2"/>
+            <rect x="40" y="49" width="6" height="2"/>
+            <rect x="40" y="58" width="6" height="2"/>
+          </g>
+          <line x1="64" y1="33" x2="80" y2="33" stroke="oklch(0.50 0.015 240)" stroke-width="0.3" stroke-dasharray="0.6 0.6"/>
+          <text x="82" y="33.6" font-size="2.5" fill="oklch(0.62 0.16 55)" font-family="IBM Plex Mono">G7120 PUMP</text>
+        </svg>
+        <div class="cap"><span>3.1</span><span>Stack · power-on</span></div>
+      </div>
+      <div class="plate">
+        <div class="plate-no">PLATE 3.2</div>
+        <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+          <rect x="20" y="20" width="60" height="60" fill="oklch(0.91 0.012 78)" stroke="oklch(0.18 0.02 240)" stroke-width="0.5"/>
+          <g fill="none" stroke="oklch(0.18 0.02 240)" stroke-width="0.4">
+            <circle cx="50" cy="50" r="12"/>
+            <circle cx="50" cy="50" r="8"/>
+            <circle cx="50" cy="50" r="4"/>
+          </g>
+          <circle cx="50" cy="50" r="1.2" fill="oklch(0.62 0.16 55)"/>
+          <text x="50" y="86" font-size="2.5" fill="oklch(0.50 0.015 240)" font-family="IBM Plex Mono" text-anchor="middle">DAD LAMP HOUSING</text>
+        </svg>
+        <div class="cap"><span>3.2</span><span>DAD · internals</span></div>
+      </div>
+      <div class="plate">
+        <div class="plate-no">PLATE 3.3</div>
+        <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+          <rect x="18" y="20" width="64" height="60" fill="oklch(0.91 0.012 78)" stroke="oklch(0.18 0.02 240)" stroke-width="0.5"/>
+          <g fill="none" stroke="oklch(0.18 0.02 240)" stroke-width="0.3">
+            <g transform="translate(24 26)">
+              <circle cx="3" cy="3" r="1.8"/><circle cx="9" cy="3" r="1.8"/><circle cx="15" cy="3" r="1.8"/><circle cx="21" cy="3" r="1.8"/><circle cx="27" cy="3" r="1.8"/><circle cx="33" cy="3" r="1.8"/><circle cx="39" cy="3" r="1.8"/><circle cx="45" cy="3" r="1.8"/><circle cx="51" cy="3" r="1.8"/>
+              <circle cx="3" cy="9" r="1.8"/><circle cx="9" cy="9" r="1.8"/><circle cx="15" cy="9" r="1.8"/><circle cx="21" cy="9" r="1.8"/><circle cx="27" cy="9" r="1.8"/><circle cx="33" cy="9" r="1.8"/><circle cx="39" cy="9" r="1.8"/><circle cx="45" cy="9" r="1.8"/><circle cx="51" cy="9" r="1.8"/>
+              <circle cx="3" cy="15" r="1.8"/><circle cx="9" cy="15" r="1.8"/><circle cx="15" cy="15" r="1.8"/><circle cx="21" cy="15" r="1.8"/><circle cx="27" cy="15" r="1.8"/><circle cx="33" cy="15" r="1.8"/><circle cx="39" cy="15" r="1.8"/><circle cx="45" cy="15" r="1.8"/><circle cx="51" cy="15" r="1.8"/>
+            </g>
+          </g>
+          <circle cx="36" cy="35" r="2.6" fill="oklch(0.62 0.16 55)" opacity="0.5"/>
+          <circle cx="36" cy="35" r="3.2" fill="none" stroke="oklch(0.62 0.16 55)" stroke-width="0.3" stroke-dasharray="0.6 0.6"/>
+          <text x="50" y="86" font-size="2.5" fill="oklch(0.50 0.015 240)" font-family="IBM Plex Mono" text-anchor="middle">AUTOSAMPLER TRAY · D-06</text>
+        </svg>
+        <div class="cap"><span>3.3</span><span>Tray · ref. position</span></div>
+      </div>
+    </div>
+
+    <div class="page-foot">
+      <span>Sigma Tech R&amp;D Solutions · sigmatechrd.com</span>
+      <span>R-2603 · Methodology · 3/6</span>
+    </div>
+  </article>
+
+  <!-- ╔════ Page 4 — Test record (the detailed table) ═══════════════╗ -->
+  <article class="page" id="p4">
+    <div class="page-head">
+      <span>Inspection report · <b>R-2603</b> · Agilent 1290 Infinity II UHPLC</span>
+      <span>Page 4 / 6 · Test record</span>
+    </div>
+
+    <div class="meta">§ 3 · Test record · raw deviations</div>
+    <h2 style="margin-top:10px;">Every protocol point, every measured value, every reference.</h2>
+
+    <table class="spec">
+      <thead>
+        <tr><th>Test item</th><th>Measured</th><th>Spec</th><th>Verdict</th><th>Note</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="k">Pump A · pulsation</td>
+          <td class="v">0.47 %</td><td class="spec">&lt; 0.5 %</td><td class="flag ok">✓ PASS</td>
+          <td class="note">Fourier off HP transducer at 5 mL/min. Margin to spec is thin; revisit at next CE.</td>
+        </tr>
+        <tr>
+          <td class="k">Pump A · outlet check valve ripple</td>
+          <td class="v">3.1 %</td><td class="spec">&lt; 2 %</td><td class="flag warn">⚠ COND</td>
+          <td class="note">Recoverable with valve replacement (PN G1312-67411, $1 200). Budget for it; not blocking.</td>
+        </tr>
+        <tr>
+          <td class="k">Pump B · pulsation</td>
+          <td class="v">0.38 %</td><td class="spec">&lt; 0.5 %</td><td class="flag ok">✓ PASS</td>
+          <td class="note">Within spec. No action.</td>
+        </tr>
+        <tr>
+          <td class="k">Gradient accuracy</td>
+          <td class="v">±0.3 %</td><td class="spec">±1 %</td><td class="flag ok">✓ PASS</td>
+          <td class="note">5–95 % B, 5 min, three runs. Repeatable.</td>
+        </tr>
+        <tr>
+          <td class="k">Autosampler · injection RSD</td>
+          <td class="v">0.42 % RSD</td><td class="spec">&lt; 1 %</td><td class="flag ok">✓ PASS</td>
+          <td class="note">Caffeine 100 µg/mL · n=6 · three vial positions. Well within spec.</td>
+        </tr>
+        <tr>
+          <td class="k">Autosampler · carry-over (BSA)</td>
+          <td class="v">0.0004 %</td><td class="spec">&lt; 0.0005 %</td><td class="flag ok">✓ PASS</td>
+          <td class="note">Needle wash protocol followed; no flag.</td>
+        </tr>
+        <tr>
+          <td class="k">Col. comp. · Δ T over 24 h</td>
+          <td class="v">±0.05 °C</td><td class="spec">±0.1 °C</td><td class="flag ok">✓ PASS</td>
+          <td class="note">RTD at column inlet, 5 s logging. Steady.</td>
+        </tr>
+        <tr>
+          <td class="k">DAD · noise @ 254 nm</td>
+          <td class="v">8.2·10⁻⁵ AU</td><td class="spec">&lt; 1·10⁻⁴</td><td class="flag ok">✓ PASS</td>
+          <td class="note">5 nm bandwidth, 0.4 s response. Acceptable.</td>
+        </tr>
+        <tr>
+          <td class="k">DAD · linearity (R²)</td>
+          <td class="v">0.9998</td><td class="spec">&gt; 0.999</td><td class="flag ok">✓ PASS</td>
+          <td class="note">PEEK loop dilution, 8 points 0–2000 mAU.</td>
+        </tr>
+        <tr>
+          <td class="k">DAD · lamp remaining hours</td>
+          <td class="v">71 %</td><td class="spec">&gt; 50 %</td><td class="flag warn">⚠ COND</td>
+          <td class="note">Above the 50 % floor. Plan a replacement (PN G1314-64745, $2 200) within 12 mo. of normal duty.</td>
+        </tr>
+        <tr>
+          <td class="k">Firmware · stack</td>
+          <td class="v">D.08.02</td><td class="spec">≥ D.07</td><td class="flag ok">✓ PASS</td>
+          <td class="note">All modules at consistent firmware. No mismatch.</td>
+        </tr>
+        <tr>
+          <td class="k">Service log · gaps</td>
+          <td class="v">14 mo since last CE</td><td class="spec">&lt; 18 mo</td><td class="flag ok">✓ PASS</td>
+          <td class="note">CE certificate present; log continuous.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="page-foot">
+      <span>Sigma Tech R&amp;D Solutions · sigmatechrd.com</span>
+      <span>R-2603 · Test record · 4/6</span>
+    </div>
+  </article>
+
+  <!-- ╔════ Page 5 — Signal capture ═══════════════════════════════════╗ -->
+  <article class="page" id="p5">
+    <div class="page-head">
+      <span>Inspection report · <b>R-2603</b> · Agilent 1290 Infinity II UHPLC</span>
+      <span>Page 5 / 6 · Signal capture</span>
+    </div>
+
+    <div class="meta">§ 4 · Signal capture · representative trace</div>
+    <h2 style="margin-top:10px;">DAD detector · caffeine reference · 24 h re-run.</h2>
+
+    <p class="body">
+      Trace below is the DAD output at 254 nm during the third caffeine reference injection at the end of the 24-hour hold. Baseline drift, peak symmetry, and retention time match the OEM standard chromatogram within manufacturer tolerance.
+    </p>
+
+    <div class="trace">
+      <svg class="grid" viewBox="0 0 1080 220" preserveAspectRatio="none" style="width:100%; height:200px;">
+        <defs>
+          <pattern id="g1" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M40 0 H0 V40" fill="none" stroke="oklch(0.18 0.02 240)" stroke-width="0.5" opacity="0.18"/>
+          </pattern>
+        </defs>
+        <rect width="1080" height="220" fill="url(#g1)"/>
+        <line x1="0" y1="190" x2="1080" y2="190" stroke="oklch(0.50 0.015 240)" stroke-width="0.5" stroke-dasharray="3 3"/>
+        <path d="M0 190 L120 190 L180 188 L200 186 L240 188 L300 186 L320 60 L340 130 L370 188 L450 188 L500 184 L540 90 L580 175 L640 188 L720 188 L760 180 L790 105 L830 178 L880 188 L1000 186 L1080 188"
+              fill="none" stroke="oklch(0.18 0.02 240)" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="320" cy="60" r="3.5" fill="oklch(0.62 0.16 55)"/>
+        <text x="328" y="56" font-family="IBM Plex Mono" font-size="11" fill="oklch(0.62 0.16 55)" letter-spacing="0.1em">CAFFEINE · 3.42 min</text>
+        <text x="6" y="14" font-family="IBM Plex Mono" font-size="10" fill="oklch(0.50 0.015 240)">mAU</text>
+      </svg>
+      <div style="display:flex; justify-content:space-between; font-family:var(--mono); font-size:10.5px; letter-spacing:0.14em; color:var(--dim); margin-top:8px; text-transform:uppercase;">
+        <span>t = 0 min</span><span>1.5</span><span>3.0</span><span>4.5</span><span>6.0</span><span>7.5</span><span>9.0</span><span>FIG. 5.1</span>
+      </div>
+    </div>
+
+    <div class="label-rule"><span class="label">Comparator · OEM standard chromatogram</span><span class="line"></span></div>
+
+    <table class="spec">
+      <thead>
+        <tr><th>Peak</th><th>Measured · RT</th><th>OEM · RT</th><th>Δ · %</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="k">Caffeine</td>     <td class="v">3.42 min</td><td class="spec">3.40 min</td><td class="flag ok">+0.6 %</td></tr>
+        <tr><td class="k">Theobromine</td>  <td class="v">5.61 min</td><td class="spec">5.58 min</td><td class="flag ok">+0.5 %</td></tr>
+        <tr><td class="k">Theophylline</td> <td class="v">7.91 min</td><td class="spec">7.88 min</td><td class="flag ok">+0.4 %</td></tr>
+      </tbody>
+    </table>
+
+    <div class="page-foot">
+      <span>Sigma Tech R&amp;D Solutions · sigmatechrd.com</span>
+      <span>R-2603 · Signal capture · 5/6</span>
+    </div>
+  </article>
+
+  <!-- ╔════ Page 6 — Recommendation & sign-off ═══════════════════════╗ -->
+  <article class="page" id="p6">
+    <div class="page-head">
+      <span>Inspection report · <b>R-2603</b> · Agilent 1290 Infinity II UHPLC</span>
+      <span>Page 6 / 6 · Recommendation</span>
+    </div>
+
+    <div class="meta">§ 5 · Recommendation &amp; sign-off</div>
+    <h2 style="margin-top:10px;">Buy. Reduce the bid. Budget for the lamp.</h2>
+
+    <p class="lede">
+      The unit performs to specification across the protocol envelope. Two findings — DAD lamp at 71 % remaining hours, and outlet check valve A at 3 % ripple — do not block acquisition but justify a price adjustment and a small reconditioning budget.
+    </p>
+
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="k">Verdict</div>
+        <div class="v">PASS · CONDITIONAL</div>
+        <div class="d">2 of 12 protocol items flagged · neither blocking</div>
+      </div>
+      <div class="summary-card amber">
+        <div class="k">Recommended bid</div>
+        <div class="v">USD 75 500</div>
+        <div class="d">−10.1 % vs $84 000 ask</div>
+      </div>
+      <div class="summary-card green">
+        <div class="k">Recond. budget</div>
+        <div class="v">USD 3 400</div>
+        <div class="d">DAD lamp · check valve · packing</div>
+      </div>
+    </div>
+
+    <div class="label-rule"><span class="label">Numerical breakdown</span><span class="line"></span></div>
+    <table class="spec">
+      <tbody>
+        <tr><td class="k">Listed ask price</td><td class="v" style="text-align:right;">$ 84 000</td></tr>
+        <tr><td class="k">DAD lamp (PN G1314-64745) — replacement</td><td class="v" style="text-align:right; color:var(--amber-deep);">− $ 2 200</td></tr>
+        <tr><td class="k">Outlet check valve A (PN G1312-67411)</td><td class="v" style="text-align:right; color:var(--amber-deep);">− $ 1 200</td></tr>
+        <tr><td class="k">Column shipping buffer</td><td class="v" style="text-align:right; color:var(--amber-deep);">− $ 400</td></tr>
+        <tr><td class="k">Negotiation margin (1.7 %)</td><td class="v" style="text-align:right; color:var(--amber-deep);">− $ 1 400</td></tr>
+        <tr style="border-top: 1.5px solid var(--ink);"><td class="k" style="padding-top:14px; font-weight:600;">Recommended bid</td><td class="v" style="text-align:right; font-size:18px; color:var(--amber-deep); padding-top:14px;">$ 75 500</td></tr>
+      </tbody>
+    </table>
+
+    <div class="label-rule"><span class="label">Risks &amp; what we did not test</span><span class="line"></span></div>
+    <p class="body">
+      The instrument was not run with the buyer's intended HILIC column; if the application requires sub-2 µm phases at &gt; 1 000 bar, repeat the pump pulsation test at the buyer's site after delivery. We did not inspect the autosampler thermostatic option (not fitted on this unit per OEM serial).
+    </p>
+    <p class="body">
+      Recommend post-arrival re-verification at the buyer's site once the lamp and check valve are installed. We can dispatch the same inspector; budget $1 800 for a one-day return visit.
+    </p>
+
+    <div class="sig">
+      <div class="sig-box">
+        <div class="sig-name">S.T.</div>
+        <div class="sig-meta">Inspector of record · 04</div>
+        <div class="sig-line">12 March 2026 · Boston, US</div>
+      </div>
+      <div class="sig-box">
+        <div class="sig-name" style="font-style:normal; font-size:18px; font-family:var(--mono); letter-spacing:0.18em; transform:none;">[ Σ ]</div>
+        <div class="sig-meta">Sigma Tech R&amp;D Solutions Limited</div>
+        <div class="sig-line">CR 79446742 · BR 79446742-000-12-25-A · HK SAR</div>
+      </div>
+    </div>
+
+    <div class="page-foot">
+      <span>End of document · Sigma Tech R&amp;D Solutions · sigmatechrd.com</span>
+      <span>R-2603 · Recommendation · 6/6</span>
+    </div>
+  </article>
+
+  </div><!-- /doc -->
+
+  <!-- Footer back-link -->
+  <div class="doc-bar" style="border-top: 1px solid var(--rule); padding-top: 24px; padding-bottom: 32px;">
+    <div>© 2026 Sigma Tech R&amp;D Solutions Limited · CR 79446742</div>
+    <div><a href="index.html">← Back to homepage</a></div>
+  </div>
+
+</body>
+</html>

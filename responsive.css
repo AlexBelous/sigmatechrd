@@ -1,0 +1,192 @@
+/* responsive.css — mobile / tablet overrides for the Sigma Tech homepage.
+ * The React component tree hardcodes the desktop layout via inline styles
+ * (because it was first designed as a 1400px artboard). Rather than refactor
+ * the React, we override the relevant inline-style values via CSS attribute
+ * selectors at the standard breakpoints.
+ *
+ * Rules of thumb:
+ *   - mobile  ≤ 640
+ *   - tablet  ≤ 1024
+ *   - desktop > 1024 (everything continues to work as designed)
+ */
+
+/* ─── Always: outer wrapper fluid ──────────────────────────────────── */
+#root > div { width: 100% !important; }
+
+/* ─── Tablet & mobile: shrink page-edge padding, stack section grids ── */
+@media (max-width: 1024px) {
+
+  /* page-edge horizontal padding on every section/strip from 60 → 28 */
+  [style*="padding: 18px 60px 14px"]   { padding: 16px 24px 12px !important; }
+  [style*="padding: 18px 60px"]        { padding: 16px 24px !important; }
+  [style*="padding: 56px 60px 64px"]   { padding: 40px 24px 48px !important; }
+  [style*="padding: 72px 60px 64px"]   { padding: 56px 24px 48px !important; }
+  [style*="padding: 72px 60px 72px"]   { padding: 56px 24px 56px !important; }
+  [style*="padding: 72px 60px 80px"]   { padding: 56px 24px 56px !important; }
+  [style*="padding: 80px 60px 80px"]   { padding: 56px 24px 56px !important; }
+  [style*="padding: 88px 60px 72px"]   { padding: 56px 24px 56px !important; }
+  [style*="padding: 64px 60px 32px"]   { padding: 48px 24px 24px !important; }
+  [style*="padding: 18px 60px 22px"]   { padding: 18px 24px 22px !important; }
+  [style*="padding: 32px 32px 36px"]   { padding: 26px 22px 30px !important; }
+
+  /* Hero: stack headline above instrument display */
+  [style*="grid-template-columns: minmax(0px, 1fr) 600px"],
+  [style*="grid-template-columns: minmax(0, 1fr) 600px"] {
+    grid-template-columns: 1fr !important; gap: 36px !important;
+  }
+  /* Hero headline shrink */
+  h1[style*="font-size: 108px"] { font-size: 72px !important; }
+
+  /* Section mark gutter (120px §-column) collapses */
+  [style*="grid-template-columns: 120px 1fr 1fr"],
+  [style*="grid-template-columns: 120px 1fr 320px"],
+  [style*="grid-template-columns: 120px 1fr"] {
+    grid-template-columns: 1fr !important; gap: 24px !important;
+  }
+
+  /* §1 Services: 2-col → 1-col */
+  [style*="grid-template-columns: repeat(2, 1fr)"] {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+  /* §1 service card thumb+text 180px+1fr stays as 2-col but smaller thumb */
+  [style*="grid-template-columns: 180px 1fr"] {
+    grid-template-columns: 140px 1fr !important;
+  }
+
+  /* §3 Protocol: 5-col → 2-col */
+  [style*="grid-template-columns: repeat(5, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 32px 24px !important;
+  }
+  /* Protocol dashed line connector — hide on stacked layout */
+  [style*="border-top: 1.5px dashed"][style*="left: 8%"] { display: none !important; }
+
+  /* §4 Numbers: 4-col → 2-col */
+  [style*="grid-template-columns: repeat(4, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  /* Cases header / row — kill multi-col, build a vertical card */
+  [style*="grid-template-columns: 160px 110px 1fr 130px 110px 130px 28px"] {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  [style*="grid-template-columns: 160px 110px 1fr 130px 110px 130px"] {
+    display: none !important; /* hide the desktop column-header strip */
+  }
+  /* Case detail (the expanded panel): 3-col → 1-col */
+  [style*="grid-template-columns: 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* Footer 4-col → 2-col */
+  [style*="grid-template-columns: 2fr 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 28px !important;
+  }
+  [style*="padding: 64px 60px 32px"] { padding: 48px 24px 28px !important; }
+
+  /* Brief form: 1.5fr 1fr → stack */
+  [style*="grid-template-columns: 1.5fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+  /* Spec card on hero: pinned absolute on desktop → static below frame on tablet/mobile */
+  [style*="right: calc(100% - 200px)"][style*="bottom: -32px"] {
+    position: static !important; width: 100% !important;
+    margin-top: 16px !important;
+  }
+
+  /* Hide the ruler-tick edge marks on narrow screens — they steal width */
+  [style*="width: 32px"][style*="position: absolute"][style*="bottom: 0px"] {
+    display: none !important;
+  }
+
+  /* Big inverted-plate H2 — shrink */
+  h2[style*="font-size: 60px"]  { font-size: 44px !important; }
+  h2[style*="font-size: 56px"]  { font-size: 42px !important; }
+  h2[style*="font-size: 76px"]  { font-size: 48px !important; }
+  h2[style*="font-size: 80px"]  { font-size: 48px !important; }
+
+  /* Inline §-mark giant italic — shrink */
+  [style*="font-size: 64px"][style*="font-style: italic"] { font-size: 40px !important; }
+
+  /* Numbers values 96px → 64 */
+  [style*="font-size: 96px"] { font-size: 64px !important; }
+
+  /* Nav row: convert long horizontal nav into wrap */
+  [style*="padding: 18px 24px"] nav,
+  [style*="padding: 16px 24px"] nav {
+    display: none !important;
+  }
+  /* Top doc strip — hide the right-side details, keep brand line */
+  [style*="padding: 16px 24px 12px"] > div:nth-child(2) {
+    display: none !important;
+  }
+}
+
+/* ─── Mobile only ──────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+
+  /* Even tighter page-edge padding */
+  [style*="padding: 56px 60px 64px"],
+  [style*="padding: 72px 60px 64px"],
+  [style*="padding: 72px 60px 72px"],
+  [style*="padding: 72px 60px 80px"],
+  [style*="padding: 80px 60px 80px"],
+  [style*="padding: 88px 60px 72px"] {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+  [style*="padding: 16px 24px"]     { padding: 14px 18px !important; }
+  [style*="padding: 18px 24px"]     { padding: 14px 18px !important; }
+  [style*="padding: 18px 24px 22px"]{ padding: 14px 18px 22px !important; }
+  [style*="padding: 48px 24px 28px"]{ padding: 40px 18px 24px !important; }
+
+  /* Hero headline even smaller */
+  h1[style*="font-size: 108px"] { font-size: 48px !important; }
+
+  /* §4 Numbers single column on phone */
+  [style*="grid-template-columns: repeat(4, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* §3 Protocol single column */
+  [style*="grid-template-columns: repeat(5, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* §1 Service card: stack thumb above text */
+  [style*="grid-template-columns: 140px 1fr"],
+  [style*="grid-template-columns: 180px 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  /* Footer: 2 → 1 col */
+  [style*="grid-template-columns: 2fr 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  /* Hide top doc strip on phone — too dense */
+  [style*="padding: 14px 18px"] { font-size: 9px !important; }
+
+  /* h2 shrink more */
+  h2[style*="font-size: 60px"] { font-size: 34px !important; }
+  h2[style*="font-size: 56px"] { font-size: 32px !important; }
+  h2[style*="font-size: 76px"], h2[style*="font-size: 80px"] { font-size: 36px !important; }
+
+  /* Numbers value smaller */
+  [style*="font-size: 96px"] { font-size: 48px !important; }
+
+  /* Brief form: stack the two-column fields */
+  [style*="grid-template-columns: 1fr 1.4fr"],
+  [style*="grid-template-columns: 1fr 1fr"][style*="gap: 24"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* CTA row: stack buttons */
+  /* The hero CTAs use flex with gap — let them wrap (they already do) */
+
+  /* Document top-strip details row — hide */
+  [style*="padding: 14px 18px"] > div:nth-child(2) { display: none !important; }
+}
